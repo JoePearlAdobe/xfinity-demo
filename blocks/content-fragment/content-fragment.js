@@ -47,6 +47,17 @@ export default async function decorate(block) {
       headers: { 'Content-Type': 'application/json' }
     }
   : {
+      url: `${aempublishurl}${CONFIG.GRAPHQL_QUERY};path=${contentPath};variation=${variationname};ts=${Date.now()}`,
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    };
+/*	const requestConfig = isAuthor 
+  ? {
+      url: `${aemauthorurl}${CONFIG.GRAPHQL_QUERY};path=${contentPath};variation=${variationname};ts=${Date.now()}`,
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    }
+  : {
       url: `${CONFIG.WRAPPER_SERVICE_URL}?${CONFIG.WRAPPER_SERVICE_PARAMS}`,
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -56,7 +67,7 @@ export default async function decorate(block) {
         variation: variationname
       })
     };
-
+		*/
     try {
         // Fetch data
         const response = await fetch(requestConfig.url, {
